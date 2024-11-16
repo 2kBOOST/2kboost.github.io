@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fc;
+    color: #333;
+    margin: 0;
+}
+
+/* Nagłówek */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background: linear-gradient(135deg, #6a0dad, #ff6ec7); 
+    box-shadow: 0 8px 20px rgba(106, 13, 173, 0.4);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+/* Logo */
+.logo {
+    font-size: 2em;
+    color: #fff;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    animation: float 3s ease-in-out infinite;
+}
+
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+/* Linki nawigacyjne */
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+header nav a:hover {
+    color: #ffddff;
+    transform: scale(1.05);
+}
+
+/* Centering and styling the main page button container */
+.main-page-btn-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0; /* Space above and below the button */
+}
+
+/* Styling the main page button with a gradient */
+.main-page-btn {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #6a0dad, #ff6ec7); /* Gradient background */
+    color: white; /* White text */
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease; /* Smooth animation */
+    box-shadow: 0 4px 10px rgba(106, 13, 173, 0.4); /* Shadow for button depth */
+}
+
+/* Hover effect for the main page button */
+.main-page-btn:hover {
+    background: linear-gradient(135deg, #5b0b99, #e05bb5); /* Slightly darker gradient on hover */
+    transform: scale(1.05); /* Slightly larger on hover */
+}
+
+/* Active/pressed effect for the main page button */
+.main-page-btn:active {
+    transform: scale(0.98); /* Slightly smaller when clicked */
+    box-shadow: 0 4px 8px rgba(106, 13, 173, 0.6); /* Stronger shadow when clicked */
+}
+
+
+.logo {
+    font-size: 2em;
+    color: #fff;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+/* Order Section */
+.order-section {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Adjust spacing between rows */
+}
+
+/* Card Row */
+.short-card-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, #8e44ad, #c0392b);
+    padding: 15px 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.short-card-row:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Icon Container */
+.icon-container {
+    flex-shrink: 0;
+    background-color: white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.icon-container img {
+    width: 60%;
+    height: 60%;
+}
+
+/* Card Content */
+.card-content {
+    flex: 1;
+}
+
+.card-content h2 {
+    font-size: 1.2em;
+    margin: 0 0 5px 0;
+}
+
+.card-content p {
+    font-size: 0.9em;
+    margin: 0;
+}
+
+/* Buy Button */
+.order-btn {
+    background-color: white;
+    color: #6a1b9a;
+    border: 2px solid #6a1b9a;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 1em;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    flex-shrink: 0;
+}
+
+.order-btn:hover {
+    background-color: #6a1b9a;
+    color: white;
+}
+
+.order-btn:active {
+    transform: scale(0.95);
+}

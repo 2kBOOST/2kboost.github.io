@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fc;
+    color: #333;
+    margin: 0;
+}
+
+/* Nagłówek */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background: linear-gradient(135deg, #6a0dad, #ff6ec7); 
+    box-shadow: 0 8px 20px rgba(106, 13, 173, 0.4);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+/* Logo */
+.logo {
+    font-size: 2em;
+    color: #fff;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    animation: float 3s ease-in-out infinite;
+}
+
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+/* Linki nawigacyjne */
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+header nav a:hover {
+    color: #ffddff;
+    transform: scale(1.05);
+}
+
+/* Sekcja z kafelkami */
+.order-section {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 40px 0;
+    padding: 0 20px;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+
+/* Stylizacja kafelków */
+.order-card {
+    background: linear-gradient(135deg, #8e44ad, #c0392b); /* Gradient tła kafelka */
+    padding: 40px;
+    width: 340px; /* Szersze kafelki */
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, opacity 0.6s ease;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 320px;
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+
+/* Efekt najechania dla kafelków */
+.order-card:hover {
+    transform: translateY(-10px) scale(1.05); /* Powiększenie i uniesienie kafelka */
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3); /* Większy cień */
+}
+
+/* Dekoracyjny efekt wewnątrz kafelka */
+.order-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2), transparent);
+    transition: transform 0.5s ease;
+}
+
+.order-card:hover::before {
+    transform: scale(1.2); /* Efekt świetlny przy najechaniu */
+}
+
+/* Logo wewnątrz kafelka */
+.order-card .logo-container {
+    background-color: rgba(255, 255, 255, 0.2); /* Półprzezroczyste tło na logo */
+    border-radius: 50%;
+    padding: 12px;
+    width: 70px;
+    height: 70px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.order-card .logo-container img {
+    width: 40px;
+    height: 40px;
+}
+
+/* Nagłówek i tekst kafelka */
+.order-card h2 {
+    font-size: 1.6em;
+    margin-bottom: 10px;
+}
+
+.order-card p {
+    font-size: 1em;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* Przycisk */
+.order-btn {
+    z-index: 1010; /* Zwiększamy z-index, aby przycisk był na wierzchu */
+    position: relative; /* Ustawiamy pozycjonowanie, aby z-index miał wpływ */
+    padding: 12px 20px;
+    background-color: white; /* Białe tło przycisku */
+    color: #6a1b9a; /* Fioletowy tekst przycisku */
+    border: 2px solid #6a1b9a; /* Dodajemy obramowanie, aby wyróżnić przycisk */
+    border-radius: 5px;
+    cursor: pointer; /* Kursor wskaże, że to element klikalny */
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease; /* Płynna animacja */
+}
+
+.order-btn:hover {
+    background-color: #6a1b9a; /* Kolor przycisku po najechaniu */
+    color: white; /* Tekst staje się biały na ciemnym tle */
+    transform: scale(1.05); /* Delikatne powiększenie przycisku */
+}
+
+.order-btn:active {
+    transform: scale(0.98); /* Subtelne zmniejszenie, gdy przycisk jest klikany */
+    box-shadow: 0 4px 8px rgba(106, 13, 173, 0.4); /* Cień przy kliknięciu */
+}
+
+/* Center the .logo-container inside .order-card and make it fully filled */
+.order-card .logo-container {
+    background-color: #ffffff; /* Solid white background */
+    border-radius: 50%;
+    margin: 0 auto 20px; /* Center container horizontally */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Optional: subtle shadow */
+    overflow: hidden; /* Ensures the icon does not overflow outside the circle */
+}
+
+.order-card .logo-container img {
+    width: 145%; /* Ensure the icon fully fits within the container */
+    height: 145%; /* Maintain aspect ratio */
+    object-fit: cover; /* Scale the icon to cover the container without overflow */
+    border-radius: 60%; /* Makes sure the image itself is circular */
+}
+
+/* Centering and styling the main page button container */
+.main-page-btn-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0; /* Space above and below the button */
+}
+
+/* Styling the main page button with a gradient */
+.main-page-btn {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #6a0dad, #ff6ec7); /* Gradient background */
+    color: white; /* White text */
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease; /* Smooth animation */
+    box-shadow: 0 4px 10px rgba(106, 13, 173, 0.4); /* Shadow for button depth */
+}
+
+/* Hover effect for the main page button */
+.main-page-btn:hover {
+    background: linear-gradient(135deg, #5b0b99, #e05bb5); /* Slightly darker gradient on hover */
+    transform: scale(1.05); /* Slightly larger on hover */
+}
+
+/* Active/pressed effect for the main page button */
+.main-page-btn:active {
+    transform: scale(0.98); /* Slightly smaller when clicked */
+    box-shadow: 0 4px 8px rgba(106, 13, 173, 0.6); /* Stronger shadow when clicked */
+}
+
+//* Order Section */

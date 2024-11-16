@@ -1,0 +1,294 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+/* Reset stylów */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fc;
+    color: #333;
+    margin: 0;
+}
+
+/* Nagłówek */
+/* Import nowoczesnej czcionki Poppins z Google Fonts */
+
+
+/* Styl nagłówka */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background: linear-gradient(135deg, #6a0dad, #ff6ec7); /* Bardziej intensywny gradient */
+    box-shadow: 0 8px 20px rgba(106, 13, 173, 0.4);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Logo styl */
+.logo {
+    font-size: 2em; /* Większa czcionka dla wyraźniejszego logo */
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900;
+    letter-spacing: 2px; /* Szersze odstępy między literami */
+    text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Efektowne cieniowanie */
+    transition: transform 0.3s ease; /* Animacja skalowania przy najechaniu */
+}
+
+
+/* Efekt logo najechania */
+.logo:hover {
+    transform: scale(1.1); /* Powiększenie logo najechaniu */
+}
+
+/* Linki nawigacyjne */
+nav a {
+    margin-left: 20px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Efekt najechania linków */
+nav a:hover {
+    color: #ffddff;
+    transform: scale(1.05); /* Delikatne powiększenie przy najechaniu */
+}
+
+
+
+/* Sekcja Hero */
+.hero {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #f8f9fc;
+}
+
+.hero h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #333;
+}
+
+.hero p {
+    margin-top: 10px;
+    font-size: 1.2em;
+    color: #777;
+}
+
+.cta-buttons {
+    margin-top: 20px;
+}
+
+.start-now {
+    padding: 15px 30px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(135deg, #8a2be2, #da70d6); /* Gradient od ciemnego do jasnego fioletu */
+    border: none;
+    border-radius: 30px; /* Zaokrąglone rogi */
+    box-shadow: 0 8px 15px rgba(138, 43, 226, 0.3); /* Cień z odcieniem fioletu */
+    cursor: pointer;
+    transition: all 0.3s ease; /* Płynna animacja najechania */
+}
+
+.start-now:hover {
+    transform: scale(1.05); /* Powiększenie przy najechaniu */
+    box-shadow: 0 12px 20px rgba(138, 43, 226, 0.4); /* Większy cień przy najechaniu */
+}
+
+.start-now:active {
+    transform: scale(0.98); /* Delikatne wciśnięcie przy kliknięciu */
+    box-shadow: 0 6px 10px rgba(138, 43, 226, 0.2); /* Zmniejszony cień przy kliknięciu */
+}
+
+
+
+/* Stylizacja sekcji z telefonem */
+.phone-preview {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.notch {
+    position: absolute;
+    top: 10px;
+    width: 120px;
+    height: 20px;
+    background-color: #000;
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.screen {
+    width: 250px;
+    height: 500px;
+    background-color: #e0e0e0;
+    background-image: url('https://images.ctfassets.net/hrltx12pl8hq/5GaLeZJlLyOiQC4gOA0qUM/a0398c237e9744ade8b072f99349e07a/shutterstock_152461202_thumb.jpg'); /* Zamień na link do wybranego obrazka */
+    background-size: cover; /* Dopasowanie rozmiaru tła */
+    background-position: center; /* Wyśrodkowanie tła */
+    border-radius: 30px;
+    position: relative;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 2px solid #333;
+}
+
+
+.profile-info {
+    text-align: center;
+    font-size: 1em;
+    color: #333;
+}
+
+.profile-info p {
+    font-weight: bold;
+}
+
+.metrics {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.metric {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+.icon {
+    margin-right: 5px;
+}
+
+/* Efekt Fade-in */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Po przewinięciu i wywołaniu klasy aktywnej */
+.fade-in.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stylizacja przycisku Discorda */
+.discord-button {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000; /* Upewniamy się, że przycisk będzie na wierzchu */
+}
+
+
+/* Przycisk Discorda */
+.discord-button {
+    position: fixed;  /* Używamy fixed, aby przycisk był na stałe w lewym dolnym rogu */
+    bottom: 20px; /* Odstęp od dolnej krawędzi */
+    left: 20px; /* Odstęp od lewej krawędzi */
+    width: 50px; /* Szerokość przycisku */
+    height: 50px; /* Wysokość przycisku */
+    background-color: transparent; /* Tło przezroczyste */
+    border-radius: 50%; /* Zaokrąglone rogi */
+    overflow: hidden;
+    z-index: 1000; /* Upewniamy się, że przycisk jest na wierzchu */
+}
+
+.discord-button img {
+    width: 100%; /* Obrazek wypełnia cały przycisk */
+    height: 100%; /* Obrazek wypełnia cały przycisk */
+    object-fit: cover; /* Zapewnienie, że obrazek wypełni przycisk */
+}
+
+/* Efekty hover */
+.discord-button:hover {
+    transform: scale(1.1); /* Powiększenie przycisku */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Smooth scrolling for the page */
+html {
+    scroll-behavior: smooth; /* Enables smooth scrolling when clicking on links */
+}
+/* FAQ Section */
+.faq {
+    padding: 40px 20px;
+    background-color: #f1f1f1;
+    text-align: center;
+}
+
+.faq h2 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.accordion {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.accordion-item {
+    margin-bottom: 10px;
+}
+
+.accordion-button {
+    width: 100%;
+    padding: 15px;
+    text-align: left;
+    background-color: #8a2be2;
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.accordion-button:hover {
+    background-color: #da70d6;
+}
+
+.accordion-content {
+    display: none;
+    padding: 15px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    margin-top: 10px;
+    font-size: 1em;
+    color: #333;
+}
+
+/* Accordion Active State */
+.accordion-item.active .accordion-content {
+    display: block;
+}
+
+.accordion-item.active .accordion-button {
+    background-color: #da70d6;
+}
+
