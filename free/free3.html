@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krok 3 - Nagroda</title>
+    <script>
+        // Sprawdź, czy użytkownik przeszedł Kroki 1 i 2
+        function checkSteps() {
+            if (localStorage.getItem('step1') !== 'visited' || localStorage.getItem('step2') !== 'visited') {
+                alert('Musisz przejść Kroki 1 i 2, aby odebrać nagrodę!');
+                window.location.href = 'index.html';
+            }
+        }
+
+        // Resetuj kroki po odebraniu nagrody
+        function resetSteps() {
+            localStorage.removeItem('step1');
+            localStorage.removeItem('step2');
+            alert('Nagroda odebrana! System został zresetowany.');
+            window.location.href = 'index.html';
+        }
+    </script>
+</head>
+<body onload="checkSteps()">
+    <h1>Gratulacje!</h1>
+    <p>Udało Ci się przejść wszystkie kroki. Odbierz swoją nagrodę.</p>
+    <button onclick="resetSteps()">Odbierz nagrodę</button>
+</body>
+</html>

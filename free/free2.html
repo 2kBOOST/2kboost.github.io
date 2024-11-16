@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krok 2</title>
+    <script>
+        // Sprawdź, czy użytkownik przeszedł Krok 1
+        function checkStep1() {
+            if (localStorage.getItem('step1') !== 'visited') {
+                alert('Najpierw musisz przejść Krok 1!');
+                window.location.href = 'index.html';
+            }
+        }
+
+        // Oznacz Krok 2 jako odwiedzony
+        function markStep2() {
+            localStorage.setItem('step2', 'visited');
+        }
+    </script>
+</head>
+<body onload="checkStep1()">
+    <h1>Krok 2</h1>
+    <p>Przeszedłeś drugi krok. Przejdź dalej!</p>
+    <a href="step3.html" onclick="markStep2()">Przejdź do Kroku 3</a>
+</body>
+</html>
