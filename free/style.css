@@ -12,7 +12,6 @@ body {
 /* Kontener dla całej strony */
 .page-container {
     display: flex;
-    flex-direction: column; /* Wszystkie elementy w pionie */
     align-items: center;
     justify-content: flex-start;
     padding: 20px;
@@ -20,7 +19,7 @@ body {
 
 /* Kontener reklamy */
 .ad-container {
-    margin-bottom: 20px; /* Odstęp poniżej reklamy */
+    margin-bottom: 1px; /* Odstęp poniżej reklamy */
 }
 
 /* Kontener treści */
