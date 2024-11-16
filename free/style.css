@@ -21,7 +21,6 @@ body {
 /* Kontener reklamy 240x400 */
 .ad-container {
     display: flex;
-    justify-content: center; /* Centruje reklamę w poziomie */
     align-items: center;     /* Centruje reklamę w pionie */
     margin: 20px auto;       /* Dodaje odstępy od góry i dołu */
     max-width: 100%;         /* Zapewnia, że kontener dopasowuje się do szerokości strony */
