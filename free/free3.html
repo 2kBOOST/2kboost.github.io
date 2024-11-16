@@ -10,7 +10,7 @@
         function checkSteps() {
             if (localStorage.getItem('step1') !== 'visited' || localStorage.getItem('step2') !== 'visited') {
                 alert('Musisz przejść Kroki 1 i 2, aby odebrać nagrodę!');
-                window.location.href = 'index.html';
+                window.location.href = 'free.html';
             }
         }
 
@@ -19,7 +19,7 @@
             localStorage.removeItem('step1');
             localStorage.removeItem('step2');
             alert('Nagroda odebrana! System został zresetowany.');
-            window.location.href = 'index.html';
+            window.location.href = 'free.html';
         }
     </script>
 </head>
