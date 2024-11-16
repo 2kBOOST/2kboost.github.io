@@ -12,15 +12,29 @@ body {
 /* Kontener dla całej strony */
 .page-container {
     display: flex;
+    flex-direction: column; /* Wszystkie elementy w pionie */
     align-items: center;
     justify-content: flex-start;
     padding: 20px;
 }
 
-/* Kontener reklamy */
+/* Kontener reklamy 240x400 */
 .ad-container {
-    margin-bottom: 1px; /* Odstęp poniżej reklamy */
+    display: flex;
+    justify-content: center; /* Centruje reklamę w poziomie */
+    align-items: center;     /* Centruje reklamę w pionie */
+    margin: 20px auto;       /* Dodaje odstępy od góry i dołu */
+    max-width: 100%;         /* Zapewnia, że kontener dopasowuje się do szerokości strony */
+    overflow: hidden;        /* Ukrywa wszelkie niepożądane elementy */
+    text-align: center;
 }
+
+/* Styl iframe reklamy */
+.ad-container iframe {
+    max-width: 100%; /* Zapewnia responsywność */
+    height: auto;    /* Dostosowuje wysokość proporcjonalnie */
+}
+
 
 /* Kontener treści */
 .content-container {
@@ -59,25 +73,4 @@ p {
 .button:hover {
     background: #ffa733;
     transform: scale(1.05);
-}
-
-/* Responsywność */
-@media (max-width: 768px) {
-    .ad-container iframe {
-        width: 100%;
-        height: auto;
-    }
-
-    h1 {
-        font-size: 2rem;
-    }
-
-    p {
-        font-size: 1rem;
-    }
-
-    .button {
-        font-size: 1rem;
-        padding: 8px 16px;
-    }
 }
