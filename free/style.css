@@ -74,3 +74,15 @@ button {
         padding: 8px 16px;
     }
 }
+
+.ad-container {
+    text-align: center; /* Centruje reklamę */
+    margin: 20px auto;  /* Odstępy wokół reklamy */
+    max-width: 100%;   /* Dostosowuje rozmiar do szerokości strony */
+    overflow: hidden;
+}
+
+.ad-container iframe {
+    max-width: 100%;  /* Umożliwia skalowanie reklamy w węższych widokach */
+    height: auto;
+}
