@@ -1,4 +1,4 @@
-/* Globalne ustawienia */
+/* Globalny styl strony */
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -6,27 +6,38 @@ body {
     box-sizing: border-box;
     background: linear-gradient(135deg, #4facfe, #00f2fe);
     color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     text-align: center;
 }
 
-/* Kontener */
-.container {
+/* Kontener dla całej strony */
+.page-container {
+    display: flex;
+    flex-direction: column; /* Wszystkie elementy w pionie */
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+}
+
+/* Kontener reklamy */
+.ad-container {
+    margin-bottom: 20px; /* Odstęp poniżej reklamy */
+}
+
+/* Kontener treści */
+.content-container {
     background: rgba(0, 0, 0, 0.7);
-    padding: 20px 30px;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
     width: 90%;
-    max-width: 400px;
+    text-align: center;
 }
 
 /* Nagłówki */
 h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
 }
 
 p {
@@ -34,55 +45,40 @@ p {
     margin-bottom: 20px;
 }
 
-/* Linki i przyciski */
-a, button {
+/* Przyciski */
+.button {
     display: inline-block;
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: #fff;
     background: #ff8c00;
     padding: 10px 20px;
     border-radius: 5px;
     transition: 0.3s;
-    cursor: pointer;
-    border: none;
 }
 
-a:hover, button:hover {
+.button:hover {
     background: #ffa733;
     transform: scale(1.05);
 }
 
-/* Dostosowanie dla przycisku */
-button {
-    font-size: 1.2rem;
-    margin-top: 20px;
-}
-
 /* Responsywność */
 @media (max-width: 768px) {
+    .ad-container iframe {
+        width: 100%;
+        height: auto;
+    }
+
     h1 {
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
 
     p {
         font-size: 1rem;
     }
 
-    a, button {
-        font-size: 0.9rem;
+    .button {
+        font-size: 1rem;
         padding: 8px 16px;
     }
-}
-
-.ad-container {
-    text-align: center; /* Centruje reklamę */
-    margin: 20px auto;  /* Odstępy wokół reklamy */
-    max-width: 100%;   /* Dostosowuje rozmiar do szerokości strony */
-    overflow: hidden;
-}
-
-.ad-container iframe {
-    max-width: 100%;  /* Umożliwia skalowanie reklamy w węższych widokach */
-    height: auto;
 }
