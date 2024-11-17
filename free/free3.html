@@ -6,7 +6,21 @@
     <link rel="stylesheet" href="style.css">
     <title>Krok 3 - Nagroda</title>
 </head>
-<body onload="checkSteps()">
+   2 <script>
+       # function checkSteps() {
+            if (localStorage.getItem('step1') !== 'visited' || localStorage.getItem('step2') !== 'visited') {
+                alert('Musisz przejść Kroki 1 i 2, aby odebrać nagrodę!');
+                window.location.href = 'index.html';
+            }
+        }
+
+       # function resetSteps() {
+            localStorage.removeItem('step1');
+            localStorage.removeItem('step2');
+            alert('Nagroda odebrana! System został zresetowany.');
+            window.location.href = 'index.html';
+        }
+    </script>
     <div class="page-container">
         <!-- Reklama -->
         <div class="ad-container">
