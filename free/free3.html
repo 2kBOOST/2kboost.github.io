@@ -5,22 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Krok 3 - Nagroda</title>
-</head>
-   2 <script>
-       # function checkSteps() {
+    <script>
+        // Function to check if steps 1 and 2 are completed
+        function checkSteps() {
             if (localStorage.getItem('step1') !== 'visited' || localStorage.getItem('step2') !== 'visited') {
                 alert('Musisz przejść Kroki 1 i 2, aby odebrać nagrodę!');
-                window.location.href = 'index.html';
+                window.location.href = 'index.html'; // Redirect to the main page if steps are not completed
             }
         }
 
-       # function resetSteps() {
+        // Function to reset steps and display success message
+        function resetSteps() {
             localStorage.removeItem('step1');
             localStorage.removeItem('step2');
             alert('Nagroda odebrana! System został zresetowany.');
-            window.location.href = 'index.html';
+            window.location.href = 'index.html'; // Redirect after resetting
         }
+
+        // Function to show the reward window
+        function showRewardWindow() {
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('rewardWindow').style.display = 'block';
+        }
+
+        // Function to close the reward window
+        function closeRewardWindow() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('rewardWindow').style.display = 'none';
+        }
+
+        // Function to redeem the reward (you can extend it to actually process the reward)
+        function redeemReward() {
+            const rewardLink = document.getElementById('rewardLink').value;
+            if (rewardLink) {
+                alert('Nagroda odebrana! Link: ' + rewardLink);
+                resetSteps(); // Reset the steps after redeeming the reward
+            } else {
+                alert('Wprowadź link, aby odebrać nagrodę.');
+            }
+        }
+
+        // Check steps on page load
+        window.onload = checkSteps;
     </script>
+</head>
+<body>
     <div class="page-container">
         <!-- Reklama -->
         <div class="ad-container">
@@ -54,8 +83,8 @@
         </div>
 
         <!-- Okno formularza nagrody -->
-        <div id="overlay" class="overlay" onclick="closeRewardWindow()"></div>
-        <div id="rewardWindow" class="reward-window">
+        <div id="overlay" class="overlay" onclick="closeRewardWindow()" style="display: none;"></div>
+        <div id="rewardWindow" class="reward-window" style="display: none;">
             <h2>Formularz Nagrody</h2>
             <p>Followers: <input type="text" value="15" readonly></p>
             <p>Link: <input type="text" placeholder="Wklej link" id="rewardLink"></p>
