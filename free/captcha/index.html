@@ -69,7 +69,6 @@
             max-width: 300px;
             height: auto;
         }
-
     </style>
 </head>
 <body>
@@ -79,7 +78,7 @@
 
     <!-- Container for CAPTCHA -->
     <div class="captcha-container">
-        <img src="" alt="CAPTCHA Image" class="captcha-image" id="captchaImage">
+        <img src="" alt="CAPTCHA Image" class="captcha-image" id="captchaImage" style="display:none;">
     </div>
 
     <form id="captchaForm" action="javascript:void(0);">
@@ -108,12 +107,16 @@
 
         if (data.startsWith('OK')) {
             const captchaId = data.slice(3);
+            console.log('Captcha ID:', captchaId); // Debugowanie, by sprawdzić czy captchaId jest zwracane poprawnie
 
             // Czekamy na rozwiązanie CAPTCHA (około 20 sekund)
             setTimeout(() => fetchSolution(captchaId), 20000);
 
             // Pobieramy URL do wyświetlenia CAPTCHA
-            document.getElementById('captchaImage').src = `https://2captcha.com/captcha?id=${captchaId}`;
+            const captchaImageUrl = `https://2captcha.com/captcha?id=${captchaId}`;
+            document.getElementById('captchaImage').src = captchaImageUrl;
+            document.getElementById('captchaImage').style.display = 'inline';  // Wyświetl obrazek CAPTCHA
+
         } else {
             console.error('Błąd podczas generowania CAPTCHA:', data);
             document.getElementById('errorMessage').innerText = 'Wystąpił problem z generowaniem CAPTCHA. Spróbuj ponownie później.';
