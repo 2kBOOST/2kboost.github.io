@@ -6,9 +6,34 @@
 	    <link rel="stylesheet" href="style.css">
     <title>Krok 1</title>
     <script>
-        // Ustaw informację, że Krok 1 został odwiedzony
+        let timeSpent = 0;
+        let timer;
+
+        // Funkcja uruchamiająca timer
+        function startTimer() {
+            timer = setInterval(function () {
+                timeSpent++;
+                if (timeSpent >= 7) {
+                    enableButton();
+                    clearInterval(timer);
+                }
+            }, 1000);
+        }
+
+        // Funkcja umożliwiająca kliknięcie w przycisk po 7 sekundach
+        function enableButton() {
+            const button = document.querySelector('.button');
+            button.disabled = false;  // Umożliwiamy kliknięcie
+            button.classList.add('enabled'); // Dodajemy klasę do zmiany stylu
+        }
+
+        // Funkcja zaznaczająca, że Krok 1 został odwiedzony
         function markStep1() {
             localStorage.setItem('step1', 'visited');
+        }
+
+        window.onload = function () {
+            startTimer();  // Uruchamiamy timer po załadowaniu strony
         }
     </script>
 
@@ -49,7 +74,7 @@
 	</div>
 
     <div class="content-container">
-		<a href="https://link-hub.net/1200899/free2" class="button" onclick="markStep1()">Przejdź do Kroku 2</a>
+		<a href="free2.html" class="button" onclick="markStep1()">Przejdź do Kroku 2</a>
     </div>
 	
 	<div class="ad-container">

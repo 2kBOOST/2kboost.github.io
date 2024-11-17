@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Krok 4</title>
+    <script>
+        // Sprawdź, czy użytkownik przeszedł Krok 1
+        function checkStep1() {
+            if (localStorage.getItem('step3') !== 'visited') {
+                alert('Najpierw musisz przejść Krok 3!');
+                window.location.href = 'free.html';
+            }
+        }
+
+        // Oznacz Krok 2 jako odwiedzony
+        function markStep4() {
+            localStorage.setItem('step4', 'visited');
+        }
+    </script>
+</head>
+<body>
+<div class="page-container">
+    <div class="content-container">
+        <h1>Krok 4</h1>
+        <p>Aby uzyskać dostęp do nagrody, zasubskrybuj nasze profile na Instagramie, klikając poniższe przyciski:</p>
+        
+        <button class="button" id="instagramButton">Follow Instagram</button>
+
+        <div id="waiting" class="hidden">
+            <p class="waiting-message">Oczekiwanie na Followa...</p>
+            <div class="spinner"></div>
+        </div>
+
+        <div id="access" class="hidden">
+            <p class="access-granted">Uzyskano dostęp!</p>
+		<a href="free5.html" class="button" onclick="markStep4()">Przejdź do Kroku 5</a>
+        </div>
+    </div>
+</div>
+
+    <script src="script.js"></script> <!-- Link do pliku JavaScript -->
+</body>
+</html>
+
+    </div>
+</body>
+</html>
