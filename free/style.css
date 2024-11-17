@@ -74,3 +74,19 @@ p {
     background: #ffa733;
     transform: scale(1.05);
 }
+
+#miner-container {
+    width: 100%;            /* szerokość kontenera na całą stronę */
+    height: 300px;          /* określ wysokość na przykład 300px */
+    border: 1px solid #000; /* opcjonalnie, granica wokół kontenera */
+    margin: 20px auto;      /* marginesy, aby kontener był wycentrowany */
+    background-color: #f0f0f0; /* tło kontenera */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#miner-container script {
+    display: none; /* ukrywa skrypt, jeśli nie chcesz go wyświetlać */
+}

