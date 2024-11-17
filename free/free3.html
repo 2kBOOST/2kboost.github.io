@@ -7,10 +7,16 @@
     <title>Krok 3 - Nagroda</title>
     <script>
         // Function to check if steps 1 and 2 are completed
+		function markStep2() {
+            localStorage.setItem('step2', 'visited');
+        }
+		unction markStep1() {
+            localStorage.setItem('step2', 'visited');
+        }
         function checkSteps() {
             if (localStorage.getItem('step1') !== 'visited' || localStorage.getItem('step2') !== 'visited') {
                 alert('Musisz przejść Kroki 1 i 2, aby odebrać nagrodę!');
-                window.location.href = 'index.html'; // Redirect to the main page if steps are not completed
+                window.location.href = 'free.html'; // Redirect to the main page if steps are not completed
             }
         }
 
@@ -19,7 +25,7 @@
             localStorage.removeItem('step1');
             localStorage.removeItem('step2');
             alert('Nagroda odebrana! System został zresetowany.');
-            window.location.href = 'index.html'; // Redirect after resetting
+            window.location.href = 'free.html'; // Redirect after resetting
         }
 
         // Function to show the reward window
