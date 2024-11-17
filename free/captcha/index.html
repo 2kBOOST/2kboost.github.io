@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rozwiąż CAPTCHA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .error-message {
+            color: red;
+            text-align: center;
+        }
+
+        .captcha-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .captcha-image {
+            display: inline-block;
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Rozwiąż CAPTCHA, aby kontynuować</h2>
+
+    <!-- Container for CAPTCHA -->
+    <div class="captcha-container">
+        <img src="" alt="CAPTCHA Image" class="captcha-image" id="captchaImage">
+    </div>
+
+    <form id="captchaForm" action="javascript:void(0);">
+        <!-- CAPTCHA użytkownika (tekstowe rozwiązanie) -->
+        <p>Wpisz odpowiedź z CAPTCHA:</p>
+        <input type="text" name="captcha_answer" id="captcha_answer" required placeholder="Wpisz odpowiedź">
+
+        <input type="submit" value="Wyślij">
+    </form>
+
+    <div class="error-message" id="errorMessage"></div>
+</div>
+
+<script>
+    // Twój klucz API z 2Captcha
+    const apiKey = '7b4474740eae278d5adcfda98bfb4d2a';
+
+    // Funkcja, która pobiera CAPTCHA
+    async function fetchCaptcha() {
+        const pageUrl = 'https://2kboost.github.io/free/captcha/index.html';  // URL do strony, gdzie wyświetlana jest CAPTCHA
+
+        // Zapytanie do 2Captcha w celu wygenerowania CAPTCHA
+        const requestUrl = `https://2captcha.com/in.php?key=${apiKey}&method=userrecaptcha&googlekey=6LcpEg0UAAAAAPTxqOcohQQU0XpcwnFsUOVr6mRw&pageurl=${pageUrl}`;
+        const response = await fetch(requestUrl);
+        const data = await response.text();
+
+        if (data.startsWith('OK')) {
+            const captchaId = data.slice(3);
+
+            // Czekamy na rozwiązanie CAPTCHA (około 20 sekund)
+            setTimeout(() => fetchSolution(captchaId), 20000);
+
+            // Pobieramy URL do wyświetlenia CAPTCHA
+            document.getElementById('captchaImage').src = `https://2captcha.com/captcha?id=${captchaId}`;
+        } else {
+            console.error('Błąd podczas generowania CAPTCHA:', data);
+            document.getElementById('errorMessage').innerText = 'Wystąpił problem z generowaniem CAPTCHA. Spróbuj ponownie później.';
+        }
+    }
+
+    // Funkcja pobierająca rozwiązanie CAPTCHA
+    async function fetchSolution(captchaId) {
+        const resultUrl = `https://2captcha.com/res.php?key=${apiKey}&action=get&id=${captchaId}`;
+        const response = await fetch(resultUrl);
+        const result = await response.text();
+
+        if (result.startsWith('OK')) {
+            const solution = result.slice(3);
+            sessionStorage.setItem('captchaSolution', solution);
+        } else {
+            console.error('Błąd podczas pobierania odpowiedzi CAPTCHA:', result);
+            document.getElementById('errorMessage').innerText = 'Nie udało się pobrać rozwiązania CAPTCHA. Spróbuj ponownie później.';
+        }
+    }
+
+    // Obsługa formularza
+    document.getElementById('captchaForm').onsubmit = function (e) {
+        e.preventDefault();
+
+        const userAnswer = document.getElementById('captcha_answer').value;
+        const correctAnswer = sessionStorage.getItem('captchaSolution');
+
+        if (userAnswer.trim().toLowerCase() === correctAnswer.toLowerCase()) {
+            alert('Odpowiedź jest poprawna!');
+            // Możesz dodać kod do przejścia na inną stronę lub innych akcji
+        } else {
+            document.getElementById('errorMessage').innerText = 'Odpowiedź jest błędna. Spróbuj ponownie.';
+        }
+    };
+
+    // Wywołanie funkcji w celu pobrania CAPTCHA na stronie
+    fetchCaptcha();
+</script>
+
+</body>
+</html>
