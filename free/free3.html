@@ -3,78 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
     <title>Krok 3 - Nagroda</title>
-    <script>
-        // Sprawdź, czy użytkownik przeszedł Kroki 1 i 2
-        function checkSteps() {
-            if (localStorage.getItem('step1') !== 'visited' || localStorage.getItem('step2') !== 'visited') {
-                alert('Musisz przejść Kroki 1 i 2, aby odebrać nagrodę!');
-                window.location.href = 'free.html';
-            }
-        }
-
-        // Resetuj kroki po odebraniu nagrody
-        function resetSteps() {
-            localStorage.removeItem('step1');
-            localStorage.removeItem('step2');
-            alert('Nagroda odebrana! System został zresetowany.');
-            window.location.href = 'free.html';
-        }
-    </script>
 </head>
-<div class="page-container">
-    <!-- Reklama -->
-    <div class="ad-container">
-		<iframe data-aa='2365474' src='//ad.a-ads.com/2365474?size=240x400' 
-				style='width:240px; height:400px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe>
-        <iframe data-aa='2365469' src='//ad.a-ads.com/2365469?size=970x250' 
-                style='width:970px; height:250px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe>	
-		<iframe data-aa="2365472" src="//ad.a-ads.com/2365472?size=240x400" 
-				style="width:240px; height:400px; border:0px; padding:0; overflow:hidden; background-color: transparent;"></iframe>
-	</div>
-    <div class="content-container">
-        <h1>Koniec</h1>
-        <p>Przeszedłeś trzeci krok. Zjedź w dół!</p>
-    </div>
-	<div class="ad-container">
-		<iframe data-aa='2365483' src='//ad.a-ads.com/2365483?size=300x250' 
-				style='width:300px; height:250px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe>
-		<iframe data-aa='2365480' src='//ad.a-ads.com/2365480?size=300x250' 
-				style='width:300px; height:250px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe>
-		<iframe data-aa='2365477' src='//ad.a-ads.com/2365477?size=300x600' 	
-				style='width:300px; height:600px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe>
-		<iframe data-aa='2365479' src='//ad.a-ads.com/2365479?size=300x250' 
-				style='width:300px; height:250px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe>
-		<iframe data-aa='2365484' src='//ad.a-ads.com/2365484?size=300x250' 
-				style='width:300px; height:250px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe>
-	</div>
-	<div class="ad-container">
-			<iframe data-aa='2365491' src='//ad.a-ads.com/2365491?size=728x90' 
-				style='width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe>
-	</div>
-	
 <body onload="checkSteps()">
-    <h1>Gratulacje!</h1>
-    <p>Udało Ci się przejść wszystkie kroki. Odbierz swoją nagrodę.</p>
-    <button onclick="resetSteps()">Odbierz nagrodę</button>
+    <div class="page-container">
+        <!-- Reklama -->
+        <div class="ad-container">
+            <iframe data-aa='2365474' src='//ad.a-ads.com/2365474?size=240x400' 
+                    style='width:240px; height:400px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe>
+            <iframe data-aa='2365469' src='//ad.a-ads.com/2365469?size=970x250' 
+                    style='width:970px; height:250px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe>
+        </div>
+
+        <div class="content-container">
+            <h1>Koniec</h1>
+            <p>Przeszedłeś trzeci krok. Zjedź w dół!</p>
+        </div>
+
+        <div class="ad-container">
+            <iframe data-aa='2365483' src='//ad.a-ads.com/2365483?size=300x250' 
+                    style='width:300px; height:250px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe>
+            <iframe data-aa='2365480' src='//ad.a-ads.com/2365480?size=300x250' 
+                    style='width:300px; height:250px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe>
+        </div>
+
+        <div class="ad-container">
+            <iframe data-aa='2365491' src='//ad.a-ads.com/2365491?size=728x90' 
+                    style='width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe>
+        </div>
+
+        <div class="content-container">
+            <h1>Gratulacje!</h1>
+            <p>Udało Ci się przejść wszystkie kroki. Odbierz swoją nagrodę.</p>
+            <button onclick="showRewardWindow()">Odbierz nagrodę</button>
+        </div>
+
+        <!-- Okno formularza nagrody -->
+        <div id="overlay" class="overlay" onclick="closeRewardWindow()"></div>
+        <div id="rewardWindow" class="reward-window">
+            <h2>Formularz Nagrody</h2>
+            <p>Followers: <input type="text" value="15" readonly></p>
+            <p>Link: <input type="text" placeholder="Wklej link" id="rewardLink"></p>
+            <button onclick="redeemReward()">Odbierz</button>
+            <button onclick="closeRewardWindow()">Zamknij</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
-	<div class="ad-container">
-		<iframe data-aa='2365495' src='//ad.a-ads.com/2365495?size=200x200' 
-				style='width:200px; height:200px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe>
-		<iframe data-aa='2365496' src='//ad.a-ads.com/2365496?size=200x200' 
-				style='width:200px; height:200px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe>
-		<iframe data-aa='2365488' src='//ad.a-ads.com/2365488?size=970x250' 
-				style='width:970px; height:250px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe>
-		<iframe data-aa='2365498' src='//ad.a-ads.com/2365498?size=200x200'
-				style='width:200px; height:200px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe>
-		<iframe data-aa='2365499' src='//ad.a-ads.com/2365499?size=200x200' 
-				style='width:200px; height:200px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe>
-
-	</div>
-			<iframe data-aa='2365490' src='//acceptable.a-ads.com/2365490' 
-				style='border:0px; padding:0; width:100%; height:100%; overflow:hidden; background-color: transparent;'></iframe>
-</div>
-</head>
-
 </html>
