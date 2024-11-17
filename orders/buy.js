@@ -1,4 +1,4 @@
-const unitPrice = 0.0025; // Cena za jednego obserwującego
+const unitPrice = 0.0025; // Cena za jednego użytkownika
 
 // Funkcja do aktualizacji wartości i ceny na stronie
 function updateQuantity(value) {
@@ -7,12 +7,65 @@ function updateQuantity(value) {
     document.getElementById('price-tag').textContent = `$${totalPrice}`;
 }
 
+// Funkcja, która aktualizuje typ usługi i platformę
+function updateServiceType() {
+    const serviceType = document.getElementById('service-type').value;
+    const platform = document.getElementById('platform').value;
+    const quantity = document.getElementById('quantity').value;
+
+    let priceMultiplier = 1;
+    let serviceLabel = '';
+
+    // Wybór ceny i usługi na podstawie platformy i typu usługi
+    if (platform === 'instagram') {
+        if (serviceType === 'likes') {
+            serviceLabel = 'Instagram Likes';
+            priceMultiplier = 1; // Cena za Instagram Like
+        } else if (serviceType === 'followers') {
+            serviceLabel = 'Instagram Followers';
+            priceMultiplier = 1.5; // Cena za Instagram Followers
+        } else if (serviceType === 'comments') {
+            serviceLabel = 'Instagram Comments';
+            priceMultiplier = 2; // Cena za Instagram Comment
+        }
+    } else if (platform === 'tiktok') {
+        if (serviceType === 'likes') {
+            serviceLabel = 'TikTok Likes';
+            priceMultiplier = 1.2; // Cena za TikTok Like
+        } else if (serviceType === 'followers') {
+            serviceLabel = 'TikTok Followers';
+            priceMultiplier = 1.7; // Cena za TikTok Followers
+        } else if (serviceType === 'comments') {
+            serviceLabel = 'TikTok Comments';
+            priceMultiplier = 2.5; // Cena za TikTok Comment
+        }
+    } else if (platform === 'youtube') {
+        if (serviceType === 'likes') {
+            serviceLabel = 'YouTube Likes';
+            priceMultiplier = 1.3; // Cena za YouTube Like
+        } else if (serviceType === 'followers') {
+            serviceLabel = 'YouTube Subscribers';
+            priceMultiplier = 2.0; // Cena za YouTube Subskrybentów
+        } else if (serviceType === 'comments') {
+            serviceLabel = 'YouTube Comments';
+            priceMultiplier = 2.5; // Cena za YouTube Comment
+        }
+    }
+
+    // Aktualizacja tekstu i ceny
+    const totalPrice = (quantity * unitPrice * priceMultiplier).toFixed(2);
+    document.getElementById('price-tag').textContent = `$${totalPrice}`;
+    document.getElementById('type').value = serviceLabel; // Aktualizacja typu usługi
+}
+
 // Funkcja do wyświetlenia modala
 function showModal() {
     const profileLink = document.getElementById('profile-link').value;
     const quantity = document.getElementById('quantity').value;
+    const serviceType = document.getElementById('service-type').value;
+    const platform = document.getElementById('platform').value;
     const totalPrice = (quantity * unitPrice).toFixed(2);
-    const transactionID = `instagram-followers-${encodeURIComponent(profileLink)}-${quantity}`;
+    const transactionID = `${platform}-${serviceType}-${encodeURIComponent(profileLink)}-${quantity}`;
 
     // Ustawienie tekstu z ID transakcji
     document.getElementById('transaction-id-text').textContent = `Transaction ID: ${transactionID}`;
@@ -26,49 +79,4 @@ function showModal() {
 function closeModal() {
     const modal = document.getElementById('payment-modal');
     modal.style.display = "none";
-}
-
-// Funkcja do przekierowania na Discord
-function redirectToDiscord() {
-    // Pobieramy dane z formularza
-    const profileLink = document.getElementById('profile-link').value;
-    const quantity = document.getElementById('quantity').value;
-    const totalPrice = (quantity * unitPrice).toFixed(2);
-    const transactionID = `instagram-followers-${encodeURIComponent(profileLink)}-${quantity}`;
-
-    // URL webhooka Discorda (zamień go na swój prawdziwy URL webhooka)
-    const webhookURL = `https://discord.com/api/webhooks/1307312226633252945/_Xn_fFMzYvRwnYL46S0Lqc_37I42UFIFsGfqOhcbMNkKW6U9G1RX8BAgUmxFY-ahl-fW`;
-
-    // Tworzymy dane JSON, które będziemy wysyłać do Discorda
-    const data = {
-        content: 'New Purchase!',
-        embeds: [
-            {
-                title: 'Instagram Followers Purchase',
-                description: `Followers purchased for: ${profileLink}`,
-                fields: [
-                    { name: 'Quantity', value: quantity },
-                    { name: 'Total Price', value: `$${totalPrice}` },
-                    { name: 'Transaction ID', value: transactionID }
-                ]
-            }
-        ]
-    };
-
-    // Używamy fetch do wysyłania danych do Discorda
-    fetch(webhookURL, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    }).then(response => {
-        if (response.ok) {
-            window.location.href = "https://discord.com"; // Przekierowanie na Discorda po wysłaniu danych
-        } else {
-            alert('Error sending data to Discord');
-        }
-    }).catch(error => {
-        alert('Error sending data to Discord: ' + error);
-    });
 }
