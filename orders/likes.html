@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Followers</title>
+    <link rel="stylesheet" href="buy.css"> <!-- Zewnętrzny plik CSS -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+</head>
+<body>
+    <header>
+        <div class="logo">2kBOOST</div>
+    </header>
+
+    <form id="payment-form">
+        <div class="container">
+            <h1 class="title">Buy Likes</h1>
+            <p class="description">Boost your Instagram profile with likes!</p>
+
+            <div class="input-group">
+                <label for="type">Purchase Type:</label>
+                <input type="text" id="type" value="Likes" readonly>
+            </div>
+
+            <div class="input-group">
+                <label for="profile-link">Instagram Profile Link:</label>
+                <input type="text" id="profile-link" placeholder="Enter your profile link">
+            </div>
+
+            <div class="input-group">
+                <label for="quantity">Select Quantity:</label>
+                <input id="quantity" type="range" min="500" max="50000" step="500" value="1000" oninput="updateQuantity(this.value)">
+                <p>Quantity: <span id="quantity-value">1000</span></p>
+            </div>
+
+            <div class="price-container">
+                <div class="price-text" id="price-tag">$2.50</div>
+                <button type="button" class="main-page-btn" onclick="showModal()">Proceed to Discord</button>
+            </div>
+        </div>
+
+<div class="main-page-btn-container">
+    <a href="../index.html" class="main-page-btn">Cancel</a>
+</div>
+
+    </form>
+
+    <!-- Modal Popup -->
+    <div id="payment-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Payments are temporarily only available on Discord</h2>
+            <p id="transaction-id-text"></p>
+            <button id="discord-btn" class="main-page-btn" onclick="redirectToDiscord()">Proceed to Discord</button>
+        </div>
+    </div>
+
+    <script src="buy.js"></script> <!-- Zewnętrzny plik JavaScript -->
+</body>
+</html>
